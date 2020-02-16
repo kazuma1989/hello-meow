@@ -1,3 +1,4 @@
+#!/user/bin/env node
 // @ts-check
 const meow = require("meow");
 
