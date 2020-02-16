@@ -1,0 +1,9 @@
+{
+  "name": "hello-meow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "meow": "^6.0.1"
+  }
+}
