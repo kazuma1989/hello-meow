@@ -52,8 +52,8 @@ const subCommand = {
     async double(meow) {
         (await Promise.resolve().then(() => __importStar(require("./commands/double")))).default(meow);
     },
-    inq(...args) {
-        // require("./commands/inq")(...args);
+    async inq(meow) {
+        (await Promise.resolve().then(() => __importStar(require("./commands/inq")))).default(meow);
     }
 };
 const base = cli();

@@ -12,6 +12,7 @@
     "meow": "^6.0.1"
   },
   "devDependencies": {
+    "@types/inquirer": "^6.5.0",
     "typescript": "^3.7.5"
   }
 }

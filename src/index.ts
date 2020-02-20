@@ -56,8 +56,8 @@ const subCommand = {
   async double(meow) {
     (await import("./commands/double")).default(meow);
   },
-  inq(...args) {
-    // require("./commands/inq")(...args);
+  async inq(meow) {
+    (await import("./commands/inq")).default(meow);
   }
 };
 
