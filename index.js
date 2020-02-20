@@ -51,6 +51,9 @@ const cli = (helpText, options = {}) => {
 const subCommand = {
   double(...args) {
     require("./commands/double")(...args);
+  },
+  inq(...args) {
+    require("./commands/inq")(...args);
   }
 };
 
