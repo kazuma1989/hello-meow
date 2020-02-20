@@ -1,10 +1,19 @@
-// @ts-check
-const meow = require("meow");
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const meow_1 = __importDefault(require("meow"));
 const cli = (helpText, options = {}) => {
-  const result = meow(
-    helpText ||
-      `
+    const result = meow_1.default(helpText ||
+        `
     Usage
       $ hello-meow [...INPUT]
 
@@ -15,56 +24,45 @@ const cli = (helpText, options = {}) => {
     Examples
       $ hello-meow -v unicorns --rainbow
       🌈 unicorns 🌈
-`,
-    {
-      ...options,
-      flags: {
-        verbose: {
-          type: "boolean",
-          default: false,
-          alias: "v"
-        },
-        rainbow: {
-          type: "boolean",
-          default: false,
-          alias: "r"
-        },
-        ...options.flags
-      }
+`, {
+        ...options,
+        flags: {
+            verbose: {
+                type: "boolean",
+                default: false,
+                alias: "v"
+            },
+            rainbow: {
+                type: "boolean",
+                default: false,
+                alias: "r"
+            },
+            ...options.flags
+        }
+    });
+    if (helpText) {
+        const { input: [, ...input], flags: { help }, showHelp } = result;
+        if (!input.length && help) {
+            showHelp();
+        }
     }
-  );
-
-  if (helpText) {
-    const {
-      input: [, ...input],
-      flags: { help },
-      showHelp
-    } = result;
-    if (!input.length && help) {
-      showHelp();
-    }
-  }
-
-  return result;
+    return result;
 };
-
 const subCommand = {
-  double(...args) {
-    require("./commands/double")(...args);
-  },
-  inq(...args) {
-    require("./commands/inq")(...args);
-  }
+    async double(meow) {
+        (await Promise.resolve().then(() => __importStar(require("./commands/double")))).default(meow);
+    },
+    inq(...args) {
+        // require("./commands/inq")(...args);
+    }
 };
-
 const base = cli();
-
 const [command] = base.input;
 if (subCommand[command]) {
-  subCommand[command](cli);
-} else {
-  console.log(base.input, base.flags);
+    subCommand[command](cli);
 }
-
+else {
+    console.log(base.input, base.flags);
+}
 // const output = input.join(" ");
 // console.log(rainbow ? `🌈 ${output} 🌈` : output);

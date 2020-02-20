@@ -1,9 +1,7 @@
-module.exports = meow => {
-  const {
-    input: [, ...input],
-    flags
-  } = meow(
-    `
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = meow => {
+    const { input: [, ...input], flags } = meow(`
     Usage
       $ hello-meow double [...INPUT]
 
@@ -13,20 +11,17 @@ module.exports = meow => {
     Examples
       $ hello-meow double unicorns --rainbow
       🌈🌈 unicorns 🌈🌈
-`,
-    {
-      flags: {
-        // Override a flag
-        rainbow: {
-          type: "string",
-          default: "",
-          alias: "r"
+`, {
+        flags: {
+            // Override a flag
+            rainbow: {
+                type: "string",
+                default: "",
+                alias: "r"
+            }
         }
-      }
-    }
-  );
-
-  console.log("sub", input, flags);
-  // const output = input.join(" ");
-  // console.log(rainbow ? `🌈 ${output} 🌈` : output);
+    });
+    console.log("sub", input, flags);
+    // const output = input.join(" ");
+    // console.log(rainbow ? `🌈 ${output} 🌈` : output);
 };
