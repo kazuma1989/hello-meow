@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    // Required: Choose your target based on which environments you'd like to support.
+    "target": "ES2019",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+
+    // Required: Convert `export =` into `export default`.
+    "esModuleInterop": true,
+
+    // Optional: Useful type checks.
+    "strictNullChecks": true
+  },
+
+  // Required
+  "include": ["src/**/*"]
+}
